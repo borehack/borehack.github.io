@@ -1,0 +1,12 @@
+---
+layout: post
+title: Quartz Java Library and private inner class
+date: '2015-10-29T13:02:00.002-07:00'
+author: Borehack
+tags: 
+modified_time: '2015-10-29T13:02:59.953-07:00'
+blogger_id: tag:blogger.com,1999:blog-2004660578155189439.post-5571926904668145020
+blogger_orig_url: http://www.borehack.com/2015/10/quartz-java-library-and-private-inner.html
+---
+
+<script>hljs.initHighlightingOnLoad();</script> Please be aware. Quartz is a good library, but it would not give you an error in some environments if you run something like the below code. It just won t execute anything. The reason is that you have to make the inner JobA class public or put it in a extra class file. If it does not execute even if you have copied everything from the examples but made the JobA class somehow a inner private class, nothing will happen.  The below example do work, but if you make the inner class private it just wont execute...   <pre><code class="java"><br />import org.quartz.CronScheduleBuilder;<br />import org.quartz.Job;<br />import org.quartz.JobBuilder;<br />import org.quartz.JobDetail;<br />import org.quartz.JobExecutionContext;<br />import org.quartz.JobExecutionException;<br />import org.quartz.JobKey;<br />import org.quartz.Scheduler;<br />import org.quartz.Trigger;<br />import org.quartz.TriggerBuilder;<br />import org.quartz.impl.StdSchedulerFactory;<br /><br />public class QuartzExample {<br />    public static void main(final String[] args) throws Exception {<br /><br />        final JobKey jobKey = new JobKey("jobA", "group1");<br />        final JobDetail job = JobBuilder.newJob(JobA.class).withIdentity(jobKey).build();<br /><br />        final Trigger trigger = TriggerBuilder.newTrigger().withIdentity("dummyTriggerName1", "group1")<br />            .withSchedule(CronScheduleBuilder.cronSchedule("0/5 * * * * ?")).build();<br /><br />        final Scheduler scheduler = new StdSchedulerFactory().getScheduler();<br /><br />        scheduler.start();<br />        scheduler.scheduleJob(job, trigger);<br />    }<br /><br />    public static class JobA implements Job {<br /><br />        @Override<br />        public void execute(final JobExecutionContext context) throws JobExecutionException {<br />            System.out.println("Job A is running");<br />        }<br /><br />    }<br />}<br /></code></pre>
