@@ -124,6 +124,6 @@ public class Application {
 }
 {% endhighlight %}
 
-you can disable more auto configuration if you want to. the following link describe how to disable auto configuration with spring boot.
+you can disable more auto configuration if you want to. the following link describe how to [disable auto configuration with spring boot](https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-auto-configuration.html).
 
-https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-auto-configuration.html
+
