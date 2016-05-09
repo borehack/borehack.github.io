@@ -4,7 +4,7 @@ title:  "Docker log to AWS CloudWatch"
 date:   2016-05-09 07:30:00 +0000
 ---
 
-how to log to [AWS Cloud Watch](https://aws.amazon.com/de/cloudwatch/) with [Docker](http://www.docker.com)?
+How to log to [AWS Cloud Watch](https://aws.amazon.com/de/cloudwatch/) with [Docker](http://www.docker.com)?
 
 follow the good description
 https://docs.docker.com/engine/admin/logging/awslogs/
