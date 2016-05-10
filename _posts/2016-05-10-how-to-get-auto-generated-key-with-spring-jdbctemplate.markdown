@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "How to get auto generated key with Spring jdbcTemplate"
-date:   2016-05-10 09:02:00 +0000
+date:   2016-05-10 07:02:00 +0000
 ---
 
 If you are using [Spring Jdbc](https://spring.io/guides/gs/relational-data-access/) often you need the auto generated key from a database.
